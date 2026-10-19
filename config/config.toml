@@ -1,0 +1,18 @@
+device = "cuda:1" #device to run the analysis on
+needle_size = 0.8 #the outer diameter of the needle used to dispense water
+row_idx = 40 #the row to find the needle on
+fps = 50 #frame per second of the video
+
+batch_size = 16 #UNet batch size
+unet_dims = [3, 64, 1] #UNet spec, [input channels, first hidden layer dim, number of classes]
+unet_path = "models/unet.pth" #path to the UNet model
+
+enc_dims = [1, 64, 2] #[input dimension, encoding dim, layer dim]
+dec_dims = [1, 64, 2, 3] #dimensions for the encoder and decoder of the Seq2Seq model [input dimension, encoding dim, layer dim, number of classes, device]
+seq2seq_path = "models/seq2seq.pth" #the path to the trained Seq2Seq model
+
+save = true #whether or not to save the results
+save_masks = false #whether or not to save the segmentation masks
+# save_dir = "/save/dir" #the directory to save the results in, by default this
+# is the same as the directory where the data is loaded from, to change this
+# uncomment this line and provide a valid path
