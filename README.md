@@ -12,8 +12,9 @@ An outline of the framework is shown below:
 ![](imgs/workflow.png)
 
 The frames of the experimental video are segmented using a trained
-[UNet](https://arxiv.org/abs/1505.04597) model to identify the tablet/droplet
+Bayesian [UNet](https://arxiv.org/abs/1505.04597) model to identify the tablet/droplet
 object in the frames.
+This is trained using Monte Carlo cross entropy loss to output a predicted variance on the segmentation, allowing for psuedo-variational inference to be done and uncertainties to be propagated.
 The UNet identifies the tablet in the initial frame where no droplet is present
 allowing us to subtract the tablet from the identified object in subsequent
 frames.
